@@ -14,5 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    $organizations = \Illuminate\Support\Facades\DB::table('organizations')
+        ->select(['organization_id', 'name', 'created_at'])
+        ->get();
+    return response()->json(['organizations' => $organizations]);
 });
