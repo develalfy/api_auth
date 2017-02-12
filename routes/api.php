@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/organizations', function (Request $request) {
     $organizations = \Illuminate\Support\Facades\DB::table('organizations')
         ->select(['organization_id', 'name', 'created_at'])
         ->get();
